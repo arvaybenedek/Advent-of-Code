@@ -1,5 +1,5 @@
 fun main() {
-    val input = readInput("utils/input.txt")
+    val input = readInput("input.txt")
     val sep = input.indexOfFirst { it.isBlank() }
     val ranges = input.take(sep).map { line ->
         val (st, en) = line.split("-").map { it.toLong() }
