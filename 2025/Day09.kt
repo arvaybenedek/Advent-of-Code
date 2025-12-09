@@ -33,12 +33,6 @@ fun main() {
         val (x, y) = line.split(",").map { it.toLong() }
         x to y
     }
-    val segments = mutableListOf<Pair<Pair<Long, Long>, Pair<Long, Long>>>()
-    for (i in points.indices) {
-        val (x1, y1) = points[i]
-        val (x2, y2) = points[(i + 1) % points.size]
-        segments.add((x1 to y1) to (x2 to y2))
-    }
     var part1 = 0L
     for (i in points.indices) {
         for (j in i + 1..<points.size) {
@@ -50,6 +44,7 @@ fun main() {
         }
     }
     println(part1)
+    val segments = points.zipWithNext { a, b -> Pair(a, b) } + Pair(points.last(), points.first())
     var part2 = 0L
     for (i in points.indices) {
         for (j in i + 1..<points.size) {
